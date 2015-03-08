@@ -99,6 +99,8 @@ customParams: {
 
 <h2><a name="loading" class="anchor" href="#loading"><span class="mini-icon mini-icon-link"></span></a>Loading</h2>
 
+Set the chart with params and use <code>OrgChartV2.render()</code> method to load.
+
 ```js
 var chartParams = {
     options: {
