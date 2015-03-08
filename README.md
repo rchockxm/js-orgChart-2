@@ -18,6 +18,14 @@ The core CSS is optional.
 
 <h2><a name="thehtml" class="anchor" href="#thehtml"><span class="mini-icon mini-icon-link"></span></a>The HTML</h2>
 
+```html
+<body>
+    <div id="form" style="">
+        <div id="orgchart"></div>
+    </div>
+</body>
+```
+
 <h2><a name="template" class="anchor" href="#template"><span class="mini-icon mini-icon-link"></span></a>Template</h2>
 
 Use of the id attribute in an HTML document. This is necessary.
