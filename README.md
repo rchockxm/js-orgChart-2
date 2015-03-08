@@ -74,6 +74,42 @@ pOrgChildNode = new OrgNodeV2(nodeChildParams);
 pOrgNodes.addNodes(pOrgChildNodes);
 ```
 
+<h2><a name="loading" class="anchor" href="#loading"><span class="mini-icon mini-icon-link"></span></a>Loading</h2>
+
+```js
+var chartParams = {
+    options: {
+        top: 12,
+        left: 12,
+        lineSize: 2,
+        lineColor: "#3388dd",
+        node: {
+            width: 64,
+            height: 64,
+            maxWidth: 128,
+            maxHeight: 128,
+            template: "<div id=\"{id}\">{caption} {description}</div>"
+        }
+    },
+    event: {
+        node: {
+            onProcess: null,
+            onClick: null,
+            onMouseMove: null,
+            onMouseOver: null,
+            onMouseOut: null
+        },
+        onCreate: null,
+        onError: null,
+        onFinish: null
+    },
+    nodes: pOrgNodes
+};
+
+var pChart = new OrgChartV2(chartParams);
+pChart.render();
+```
+
 <h2><a name="template" class="anchor" href="#template"><span class="mini-icon mini-icon-link"></span></a>Template</h2>
 
 Use of the id attribute in an HTML document. This is necessary.
