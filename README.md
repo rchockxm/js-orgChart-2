@@ -40,3 +40,17 @@ var nodeChildParams = {
 };
 </script>
 ```
+
+```html
+<script language="javascript">
+var nodeChildParams = {
+    options: {
+        template: "<div id=\"{id}\" class=\"{className}\">{userName}</div>"
+    },
+    customParams: {
+        className: "orgnode-demo",
+        userName: "Rchockxm"
+    }
+};
+</script>
+```
