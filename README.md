@@ -22,7 +22,7 @@ The core CSS is optional.
 ```
 <h2><a name="thehtml" class="anchor" href="#thehtml"><span class="mini-icon mini-icon-link"></span></a>The HTML</h2>
 
-Target container is necessary include id of attribute.
+Target container is necessary include <code>id=""</code> of attribute.
 
 ```html
 <body>
