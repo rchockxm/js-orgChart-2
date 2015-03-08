@@ -1,0 +1,23 @@
+div.org-node {
+
+}
+
+div.org-node div:first-child {
+    position: absolute;
+}
+
+div.org-node div:first-child:link {
+
+}
+
+div.org-node div:first-child:visited {
+
+}
+
+div.org-node div:first-child:hover {
+
+}
+
+div.org-node div:first-child:active {
+
+}
