@@ -74,6 +74,15 @@ pOrgChildNode = new OrgNodeV2(nodeChildParams);
 pOrgNodes.addNodes(pOrgChildNodes);
 ```
 
+Custom params with Template.
+
+```js
+customParams: {
+    caption: "Root",
+    description: "Demo Nodes"
+}
+```
+
 <h2><a name="loading" class="anchor" href="#loading"><span class="mini-icon mini-icon-link"></span></a>Loading</h2>
 
 ```js
