@@ -135,7 +135,7 @@ pChart.render();
 
 <h2><a name="template" class="anchor" href="#template"><span class="mini-icon mini-icon-link"></span></a>Template</h2>
 
-Use of the id attribute in an HTML document. This is necessary.
+Use of the <code>id="{id}"</code> attribute in an HTML document. This is necessary.
 
 ```html
 <div id="{id}"></div>
