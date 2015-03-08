@@ -7,5 +7,10 @@ You need to include the the js-orgChart libraries. For example:
 
 ```html
 <script language="javascript" src="js/js-orgchart-2.js"></script>
+```
+
+The core CSS is optional. 
+
+```html
 <link rel="stylesheet" type="text/css" href="js/js-orgchart-2.css">
 ```
