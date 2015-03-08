@@ -49,6 +49,31 @@ var nodeParams = {
 var pOrgNodes = new OrgNodeV2(nodeParams);
 ```
 
+Create the child nodes of rood node.
+
+```js
+var pOrgChildNode = null;
+var nodeChildParams = {
+    options: {
+        targetName: "orgchart",
+        subTargetName: "orgnode",
+        clsName: "org-node",
+        width: 16,
+        height: 16,
+        maxWidth: 0,
+        maxHeight: 0,
+        template: ""
+    },
+    customParams: {
+        caption: "Child",
+        description: "Demo Child Nodes"
+    }
+};
+
+pOrgChildNode = new OrgNodeV2(nodeChildParams);
+pOrgNodes.addNodes(pOrgChildNodes);
+```
+
 <h2><a name="template" class="anchor" href="#template"><span class="mini-icon mini-icon-link"></span></a>Template</h2>
 
 Use of the id attribute in an HTML document. This is necessary.
