@@ -37,19 +37,6 @@ Use of the id attribute in an HTML document. This is necessary.
 Use another attribute with custom param.
 
 ```html
-<div id="{id}" class="{className}">{userName}</div>
-
-<script language="javascript">
-var nodeChildParams = {
-    customParams: {
-        className: "orgnode-demo",
-        userName: "Rchockxm"
-    }
-};
-</script>
-```
-
-```html
 <script language="javascript">
 var nodeChildParams = {
     options: {
