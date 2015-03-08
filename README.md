@@ -140,5 +140,10 @@ var nodeChildParams = {
     }
 };
 ```
+```css
+div.orgnode-demo {
+    background-color: #edf7ff;
+}
+```
 
 <h2><a name="event" class="anchor" href="#event"><span class="mini-icon mini-icon-link"></span></a>Event</h2>
