@@ -140,6 +140,7 @@ var nodeChildParams = {
     }
 };
 ```
+
 ```css
 div.orgnode-demo {
     background-color: #edf7ff;
