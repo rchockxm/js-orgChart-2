@@ -16,3 +16,4 @@ The core CSS is optional.
 ```
 <h2><a name="foramt" class="anchor" href="#foramt"><span class="mini-icon mini-icon-link"></span></a>Data Format</h2>
 
+<h2><a name="template" class="anchor" href="#template"><span class="mini-icon mini-icon-link"></span></a>Template</h2>
