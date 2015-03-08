@@ -1,6 +1,12 @@
 # js-orgChart-2
 Organizational Chart JavaScript Library
 
+Features:
+
+* No external library required. Code written in Pure JavaScript.
+* Nodes can use any custom HTML template.
+* Unlimited child nodes in node depths.
+
 <h2><a name="usage" class="anchor" href="#usage"><span class="mini-icon mini-icon-link"></span></a>Usage</h2>
 
 You need to include the the js-orgChart libraries. For example:
