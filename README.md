@@ -26,6 +26,29 @@ The core CSS is optional.
 
 <h2><a name="foramt" class="anchor" href="#foramt"><span class="mini-icon mini-icon-link"></span></a>Data Format</h2>
 
+Create the root node of the chart.
+
+```js
+var nodeParams = {
+    options: {
+        targetName: "orgchart",
+        subTargetName: "orgnode",
+        clsName: "org-node",
+        width: 64,
+        height: 32,
+        maxWidth: 0,
+        maxHeight: 0,
+        template: ""
+    },
+    customParams: {
+        caption: "Root",
+        description: "Demo Nodes"
+    }
+};
+
+var pOrgNodes = new OrgNodeV2(nodeParams);
+```
+
 <h2><a name="template" class="anchor" href="#template"><span class="mini-icon mini-icon-link"></span></a>Template</h2>
 
 Use of the id attribute in an HTML document. This is necessary.
@@ -36,8 +59,7 @@ Use of the id attribute in an HTML document. This is necessary.
 
 Use another attribute with custom param.
 
-```html
-<script language="javascript">
+```js
 var nodeChildParams = {
     options: {
         template: "<div id=\"{id}\" class=\"{className}\">{userName}</div>"
@@ -47,5 +69,4 @@ var nodeChildParams = {
         userName: "Rchockxm"
     }
 };
-</script>
 ```
