@@ -24,6 +24,12 @@ The core CSS is optional.
 </body>
 ```
 
+```html
+<body>
+    <div id="orgchart"></div>
+</body>
+```
+
 <h2><a name="foramt" class="anchor" href="#foramt"><span class="mini-icon mini-icon-link"></span></a>Data Format</h2>
 
 Create the root node of the chart.
