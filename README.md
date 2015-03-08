@@ -1,7 +1,7 @@
 # js-orgChart-2
 Organizational Chart JavaScript Library
 
-<h2><a name="usage" class="anchor" href="#usage"><span class="mini-icon mini-icon-link"></span></a>usage</h2>
+<h2><a name="usage" class="anchor" href="#usage"><span class="mini-icon mini-icon-link"></span></a>Usage</h2>
 
 You need to include the the js-orgChart libraries. For example:
 
