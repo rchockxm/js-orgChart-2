@@ -14,3 +14,5 @@ The core CSS is optional.
 ```html
 <link rel="stylesheet" type="text/css" href="js/js-orgchart-2.css">
 ```
+<h2><a name="foramt" class="anchor" href="#foramt"><span class="mini-icon mini-icon-link"></span></a>Data Format</h2>
+
