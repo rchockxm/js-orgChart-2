@@ -25,3 +25,16 @@ Use of the id attribute in an HTML document. This is necessary.
 ```html
 <div id="{id}"></div>
 ```
+
+Use another attribute with custom param.
+
+```html
+<div id="{id}" class="{className}">{userName}</div>
+
+var nodeChildParams = {
+    customParams: {
+        className: "orgnode-demo",
+        userName: "Rchockxm"
+    }
+};
+```
