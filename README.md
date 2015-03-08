@@ -160,3 +160,6 @@ div.orgnode-demo {
 ```
 
 <h2><a name="event" class="anchor" href="#event"><span class="mini-icon mini-icon-link"></span></a>Event</h2>
+
+<h2><a name="author" class="anchor" href="#author"><span class="mini-icon mini-icon-link"></span></a>Author</h2>
+* 2015 rchockxm (rchockxm.silver@gmail.com)
