@@ -31,10 +31,12 @@ Use another attribute with custom param.
 ```html
 <div id="{id}" class="{className}">{userName}</div>
 
+<script language="javascript">
 var nodeChildParams = {
     customParams: {
         className: "orgnode-demo",
         userName: "Rchockxm"
     }
 };
+</script>
 ```
