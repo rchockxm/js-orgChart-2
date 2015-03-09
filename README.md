@@ -4,7 +4,7 @@ Organizational Chart JavaScript Library
 Features:
 
 * No external library required. Code written in Pure JavaScript.
-* Nodes can use any custom HTML template.
+* Height flexible. Nodes can use any custom HTML template with CSS.
 * Unlimited child nodes in node depths.
 
 <h2><a name="usage" class="anchor" href="#usage"><span class="mini-icon mini-icon-link"></span></a>Usage</h2>
