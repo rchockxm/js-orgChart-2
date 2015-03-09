@@ -9,7 +9,7 @@ Features:
 
 <h2><a name="usage" class="anchor" href="#usage"><span class="mini-icon mini-icon-link"></span></a>Usage</h2>
 
-You need to include the the js-orgChart libraries. For example:
+You need to include the js-orgChart libraries. For example:
 
 ```html
 <script language="javascript" src="js/js-orgchart-2.js"></script>
