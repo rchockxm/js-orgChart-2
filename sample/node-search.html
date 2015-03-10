@@ -59,10 +59,13 @@ function searchNodesByData(pData, strSearch, type) {
                 break;
             }
             
+            var elm = document.getElementById(pData.node.idt1);
+            
             if (isFind == true) {
-                
-                // Todo
-                
+                elm.className = "node-light";
+            }
+            else {
+                elm.className = "";
             }
         }
         
