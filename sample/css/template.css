@@ -48,6 +48,16 @@ div.org-node div:first-child:active {
 
 }
 
+div.org-node div.node-light {
+    background: -webkit-gradient(linear, left top, left bottom, from(#CAD4F0), to(#A0B7F2));
+    background: -moz-linear-gradient(top, #CAD4F0, #A0B7F2);
+    background: -ms-linear-gradient(top, #CAD4F0, #A0B7F2);
+    background: -o-linear-gradient(top, #CAD4F0, #A0B7F2);
+    background: linear-gradient(to bottom, #CAD4F0, #A0B7F2);
+    background-color: #CAD4F0;
+    border: 2px solid #75A0ED;
+}
+
 p.node-caption {
 
 }
