@@ -61,7 +61,7 @@ function searchNodesByData(pData, strSearch, type) {
             
             var elm = document.getElementById(pData.node.idt1);
             
-            if (isFind == true) {
+            if (isFind == true && strSearch.length > 0) {
                 elm.className = "node-light";
             }
             else {
