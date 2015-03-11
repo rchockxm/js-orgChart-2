@@ -165,6 +165,8 @@ div.orgnode-demo {
 
 <h2><a name="event" class="anchor" href="#event"><span class="mini-icon mini-icon-link"></span></a>Event</h2>
 
+You can view a demo of this <a href="http://jsfiddle.net/gh/get/library/pure/rchockxm/js-orgChart-2/tree/master/demo">here</a>.
+
 <h2><a name="author" class="anchor" href="#author"><span class="mini-icon mini-icon-link"></span></a>Author</h2>
 * 2015 rchockxm (rchockxm.silver@gmail.com)
 
