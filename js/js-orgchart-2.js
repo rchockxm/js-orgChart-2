@@ -349,7 +349,8 @@ OrgNodeV2.prototype = {
             && (typeof mappingParams === "object" && mappingParams !== null)) {
             
             for (var k in mappingParams) {
-                if (typeof sourceParams[k] === "undefined" || sourceParams[k] === null) {
+                if (typeof sourceParams[k] === "undefined" || (typeof mappingParams[k] === "undefined" || mappingParams[k] === null)) {
+                    
                     continue;
                 }
                 
@@ -532,6 +533,10 @@ OrgChartV2.prototype = {
             this.chart.line.size = (typeof this.options.line.size === "number") ? this.options.line.size : this.chart.line.size;
         }
         
+        if (typeof this.event.onCreate === "function") {
+            this.event.onCreate();
+        }
+        
         // Set the depth top of all nodes.
         for (var i = 1; i <= this.chart.depth; i ++) {
             var nodeTop = (this.chart.top + this.getDepthHeightToRoot(i));
@@ -695,6 +700,10 @@ OrgChartV2.prototype = {
                     var drawLineGroup = this.drawLine(parentDOM, this.consts.line.type.group, drawLineParams);
                 }
             }
+        }
+        
+        if (typeof this.event.onFinish === "function") {
+            this.event.onFinish();
         }
         
         return ret;
