@@ -36,15 +36,29 @@
         },
         event: {
             node: {
-                onProcess: null,
-                onClick: null,
-                onMouseMove: null,
-                onMouseOver: null,
-                onMouseOut: null
+                onProcess: function(node, nodes) {
+                    console.log("node.onProcess");
+                },
+                onClick: function() {
+                    console.log("node.onClick");
+                },
+                onMouseMove: function() {
+                    console.log("node.onMouseMove");
+                },
+                onMouseOver: function() {
+                    console.log("node.onMouseOver");
+                },
+                onMouseOut: function() {
+                    console.log("node.onMouseOut");
+                }
             },
-            onCreate: null,
+            onCreate: function() {
+                console.log("onCreate");
+            },
             onError: null,
-            onFinish: null
+            onFinish: function() {
+                console.log("onFinish");
+            }
         },
         nodes: pOrgNodes
     };
