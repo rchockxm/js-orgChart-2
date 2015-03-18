@@ -142,8 +142,18 @@ OrgNodeV2.prototype = {
             }
         }
         
-        if (typeof globEvent === "object" && globEvent !== null) {
+        if ((typeof globEvent === "object" && globEvent !== null)
+            && (typeof globEvent.node === "object" && globEvent.node !== null)) {
             
+            this.event.onProcess = (typeof this.event.onProcess === "function") ? this.event.onProcess : globEvent.node.onProcess;
+            this.event.onClick = (typeof this.event.onClick === "function") ? this.event.onClick : globEvent.node.onClick;
+            this.event.onMouseMove = (typeof this.event.onMouseMove === "function") ? this.event.onMouseMove : globEvent.node.onMouseMove;
+            this.event.onMouseOver = (typeof this.event.onMouseOver === "function") ? this.event.onMouseOver : globEvent.node.onMouseOver;
+            this.event.onMouseOut = (typeof this.event.onMouseOut === "function") ? this.event.onMouseOut : globEvent.node.onMouseOut;
+        }
+        
+        if (typeof this.event.onProcess === "function") {
+            this.event.onProcess(this.node, this.nodes);
         }
         
         // Create node element for Chart.
@@ -218,6 +228,22 @@ OrgNodeV2.prototype = {
             this.node.offsetWidth = nodeOffset.width;
             this.node.offsetHeight = nodeOffset.height;
             this.node.isInit = true;
+            
+            if (typeof this.event.onClick === "function") {
+                this.node.instance.onclick = this.event.onClick;
+            }
+            
+            if (typeof this.event.onMouseMove === "function") {
+                this.node.instance.onmousemove = this.event.onMouseMove;
+            }
+            
+            if (typeof this.event.onMouseOver === "function") {
+                this.node.instance.onmouseover = this.event.onMouseOver;
+            }
+            
+            if (typeof this.event.onMouseOut === "function") {
+                this.node.instance.onmouseout = this.event.onMouseOut;
+            }
             
             ret.offsetWidth = this.node.offsetWidth;
             ret.offsetHeight = this.node.offsetHeight;
