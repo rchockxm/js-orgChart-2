@@ -1,6 +1,8 @@
 # js-orgChart-2
 Organizational Chart JavaScript Library
 
+<img src="https://img.shields.io/dub/l/vibe-d.svg" />
+
 Features:
 
 * No external library required. Code written in Pure JavaScript.
