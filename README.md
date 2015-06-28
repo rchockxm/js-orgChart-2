@@ -167,6 +167,37 @@ div.orgnode-demo {
 
 <h2><a name="event" class="anchor" href="#event"><span class="mini-icon mini-icon-link"></span></a>Event</h2>
 
+```js
+var chartParams = {
+        event: {
+            node: {
+                onProcess: function(node, nodes) {
+                    console.log("node.onProcess");
+                },
+                onClick: function() {
+                    console.log("node.onClick");
+                },
+                onMouseMove: function() {
+                    console.log("node.onMouseMove");
+                },
+                onMouseOver: function() {
+                    console.log("node.onMouseOver");
+                },
+                onMouseOut: function() {
+                    console.log("node.onMouseOut");
+                }
+            },
+            onCreate: function() {
+                console.log("onCreate");
+            },
+            onError: null,
+            onFinish: function() {
+                console.log("onFinish");
+            }
+        },
+    };
+```
+
 You can view a demo of this <a href="http://jsfiddle.net/gh/get/library/pure/rchockxm/js-orgChart-2/tree/master/demo">here</a>.
 
 <h2><a name="author" class="anchor" href="#author"><span class="mini-icon mini-icon-link"></span></a>Author</h2>
