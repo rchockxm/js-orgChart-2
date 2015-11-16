@@ -132,10 +132,14 @@ OrgNodeV2.prototype = {
         }
         
         if (typeof globParams === "object" && globParams !== null) {
-            this.options.width = (this.options.width <= 0 || this.options.width > globParams.node.width) ? globParams.node.width : this.options.width;
-            this.options.height = (this.options.height <= 0 || this.options.height > globParams.node.height) ? globParams.node.height : this.options.height;
-            this.options.maxWidth = (this.options.maxWidth <= 0 || this.options.maxWidth > globParams.node.maxWidth) ? globParams.node.maxWidth : this.options.maxWidth;
-            this.options.maxHeight = (this.options.maxHeight <= 0 || this.options.maxHeight > globParams.node.maxHeight) ? globParams.node.maxHeight : this.options.maxHeight;
+            this.options.width = (this.options.width <= 0 
+                || this.options.width > globParams.node.width) ? globParams.node.width : this.options.width;
+            this.options.height = (this.options.height <= 0 
+                || this.options.height > globParams.node.height) ? globParams.node.height : this.options.height;
+            this.options.maxWidth = (this.options.maxWidth <= 0 
+                || this.options.maxWidth > globParams.node.maxWidth) ? globParams.node.maxWidth : this.options.maxWidth;
+            this.options.maxHeight = (this.options.maxHeight <= 0 
+                || this.options.maxHeight > globParams.node.maxHeight) ? globParams.node.maxHeight : this.options.maxHeight;
             
             if (typeof this.options.template !== "string" || this.options.template.length == 0) {
                 this.options.template = globParams.node.template;
@@ -160,7 +164,9 @@ OrgNodeV2.prototype = {
         var docTempDiv = document.createElement("div");
         
         docTempDiv.id = this.node.id;
-        docTempDiv.innerHTML = "<div class='" + this.options.clsName + "' org-custom=\"node-childs\" style=\"width: 0px; height: 0px;\"></div>";
+        docTempDiv.innerHTML = "<div class='" 
+            + this.options.clsName 
+            + "' org-custom=\"node-childs\" style=\"width: 0px; height: 0px;\"></div>";
         docTempDiv.style.width = 0;
         docTempDiv.style.height = 0;
         
@@ -327,17 +333,25 @@ OrgNodeV2.prototype = {
             if (typeof sender.currentStyle === "object" && sender.currentStyle !== null) {
                     
                 if (ret.width == 0) {
-                    ret.width += (isNaN(sender.currentStyle.width === false && sender.currentStyle.width !== null)) ? sender.currentStyle.width : 0;
-                    ret.width += (isNaN(sender.currentStyle.paddingRight === false && sender.currentStyle.paddingRight !== null)) ? sender.currentStyle.paddingRight : 0;
-                    ret.width += (isNaN(sender.currentStyle.paddingLeft === false && sender.currentStyle.paddingLeft !== null)) ? sender.currentStyle.paddingLeft : 0;
-                    ret.width += (isNaN(sender.currentStyle.borderWidth === false && sender.currentStyle.borderWidth !== null)) ? (sender.currentStyle.borderWidth * 2) : 0;
+                    ret.width += (isNaN(sender.currentStyle.width === false 
+                        && sender.currentStyle.width !== null)) ? sender.currentStyle.width : 0;
+                    ret.width += (isNaN(sender.currentStyle.paddingRight === false 
+                        && sender.currentStyle.paddingRight !== null)) ? sender.currentStyle.paddingRight : 0;
+                    ret.width += (isNaN(sender.currentStyle.paddingLeft === false 
+                        && sender.currentStyle.paddingLeft !== null)) ? sender.currentStyle.paddingLeft : 0;
+                    ret.width += (isNaN(sender.currentStyle.borderWidth === false
+                        && sender.currentStyle.borderWidth !== null)) ? (sender.currentStyle.borderWidth * 2) : 0;
                 }
                 
                 if (ret.height == 0) {
-                    ret.height += (isNaN(sender.currentStyle.height === false && sender.currentStyle.height !== null)) ? sender.currentStyle.height : 0;
-                    ret.height += (isNaN(sender.currentStyle.paddingTop === false && sender.currentStyle.paddingTop !== null)) ? sender.currentStyle.paddingTop : 0;
-                    ret.height += (isNaN(sender.currentStyle.paddingBottom === false && sender.currentStyle.paddingBottom !== null)) ? sender.currentStyle.paddingBottom : 0;
-                    ret.height += (isNaN(sender.currentStyle.borderWidth === false && sender.currentStyle.borderWidth !== null)) ? (sender.currentStyle.borderWidth * 2) : 0;
+                    ret.height += (isNaN(sender.currentStyle.height === false 
+                        && sender.currentStyle.height !== null)) ? sender.currentStyle.height : 0;
+                    ret.height += (isNaN(sender.currentStyle.paddingTop === false 
+                        && sender.currentStyle.paddingTop !== null)) ? sender.currentStyle.paddingTop : 0;
+                    ret.height += (isNaN(sender.currentStyle.paddingBottom === false 
+                        && sender.currentStyle.paddingBottom !== null)) ? sender.currentStyle.paddingBottom : 0;
+                    ret.height += (isNaN(sender.currentStyle.borderWidth === false 
+                        && sender.currentStyle.borderWidth !== null)) ? (sender.currentStyle.borderWidth * 2) : 0;
                 }
             }
         }
@@ -375,12 +389,15 @@ OrgNodeV2.prototype = {
             && (typeof mappingParams === "object" && mappingParams !== null)) {
             
             for (var k in mappingParams) {
-                if (typeof sourceParams[k] === "undefined" || (typeof mappingParams[k] === "undefined" || mappingParams[k] === null)) {
+                if (typeof sourceParams[k] === "undefined" 
+                    || (typeof mappingParams[k] === "undefined"
+                    || mappingParams[k] === null)) {
                     
                     continue;
                 }
                 
                 if (typeof mappingParams[k] === "number" 
+                    || typeof mappingParams[k] === "boolean" 
                     || typeof mappingParams[k] === "string" 
                     || typeof mappingParams[k] === "function") {
                     
@@ -453,7 +470,8 @@ function OrgChartV2(chartParams) {
             maxWidth: 0,
             maxHeight: 0,
             template: "<div id=\"{id}\"></div>"
-        }
+        },
+        parentOffset: false
     };
     
     this.event = {
@@ -546,7 +564,11 @@ OrgChartV2.prototype = {
         
         var rootNode = this.nodesDepths[0];
         var parentDOM = document.getElementById(rootNode.options.targetName);
-        var parentOffset = this.getElementOffsetParents(rootNode.options.targetName);
+        var parentOffset = this.getElementOffsetParents("");
+        
+        if (this.options.parentOffset === true) {
+            parentOffset = this.getElementOffsetParents(rootNode.options.targetName);
+        }
         
         this.chart.left = parentOffset.offsetLeft;
         this.chart.top = parentOffset.offsetTop;
@@ -584,14 +606,17 @@ OrgChartV2.prototype = {
                         depthNodes[j].node.left = 0;
                     }
                     else {
-                        depthNodes[j].node.left = (depthNodes[j - 1].node.left + depthNodes[j - 1].node.offsetWidth + this.chart.intervalWidth);
+                        depthNodes[j].node.left = (depthNodes[j - 1].node.left 
+                            + depthNodes[j - 1].node.offsetWidth 
+                            + this.chart.intervalWidth);
                     }
                 }
             }
             else {
                 for (var j = 0; j < depthNodeLength; j ++) {
                     if (depthNodes[j].nodes.length > 0) {
-                        var nodeLeft = (depthNodes[j].nodes[0].node.left + (this.getGroupWidth(depthNodes[j].nodes[0]) / 2));
+                        var nodeLeft = (depthNodes[j].nodes[0].node.left 
+                            + (this.getGroupWidth(depthNodes[j].nodes[0]) / 2));
                         
                         nodeLeft -= (depthNodes[j].node.offsetWidth / 2);
                         depthNodes[j].node.left = nodeLeft;
@@ -604,7 +629,9 @@ OrgChartV2.prototype = {
                 }
                 
                 for (var j = 1; j < depthNodeLength; j ++) {
-                    var errDistance = (this.chart.intervalWidth - (depthNodes[j].node.left - depthNodes[j - 1].node.left - depthNodes[j - 1].node.offsetWidth));
+                    var errDistance = (this.chart.intervalWidth 
+                        - (depthNodes[j].node.left - depthNodes[j - 1].node.left 
+                        - depthNodes[j - 1].node.offsetWidth));
                     
                     if (errDistance > 0) {
                         var n = j;
@@ -707,7 +734,9 @@ OrgChartV2.prototype = {
             for (var j = 0; j < nodeGroups.length; j ++) {
                 
                 if (nodeGroups[j].length != 1) {
-                    var nodeLineWidth = (nodeGroups[j].depthGroupWidth - (nodeGroups[j][0].node.offsetWidth / 2) + this.chart.line.size);
+                    var nodeLineWidth = (nodeGroups[j].depthGroupWidth 
+                        - (nodeGroups[j][0].node.offsetWidth / 2) 
+                        + this.chart.line.size);
                     
                     nodeLineWidth -= (nodeGroups[j][nodeGroups[j].length - 1].node.offsetWidth / 2);
                     
@@ -850,7 +879,8 @@ OrgChartV2.prototype = {
             var maxHeight = 0;
             
             for (var j = 0; j < nodes.length; j ++) {
-                var offsetHeight = (isNaN(nodes[j].node.offsetHeight) === false && nodes[j].node.offsetHeight !== null) ? nodes[j].node.offsetHeight : 0;
+                var offsetHeight = (isNaN(nodes[j].node.offsetHeight) === false 
+                    && nodes[j].node.offsetHeight !== null) ? nodes[j].node.offsetHeight : 0;
                 //var optHeight = (isNaN(nodes[j].options.height) === false && nodes[j].options.height !== null) ? nodes[j].options.height : 0;
                 //var optMaxHeight = (isNaN(nodes[j].options.maxHeighth) === false && nodes[j].options.maxHeight !== null) ? nodes[j].options.maxHeight : 0;
                 
@@ -904,7 +934,8 @@ OrgChartV2.prototype = {
                 i = (findIndex - 1);
                 
                 for (i; i >= nodeID; i --) {
-                    depthNodes[i].node.left = (depthNodes[i + 1].node.left - this.chart.intervalWidth - depthNodes[i].node.offsetWidth);
+                    depthNodes[i].node.left = (depthNodes[i + 1].node.left 
+                        - this.chart.intervalWidth - depthNodes[i].node.offsetWidth);
                 }
             }
             
@@ -928,7 +959,8 @@ OrgChartV2.prototype = {
                     i = (findIndex + 1);
                     
                     for (i; i <= nodeID; i ++) {
-                        depthNodes[i].node.left = (depthNodes[i - 1].node.left + this.chart.intervalWidth + depthNodes[i - 1].node.offsetWidth);
+                        depthNodes[i].node.left = (depthNodes[i - 1].node.left 
+                            + this.chart.intervalWidth + depthNodes[i - 1].node.offsetWidth);
                     }
                 }
             }
@@ -1016,7 +1048,7 @@ OrgChartV2.prototype = {
             offsetTop: 0
         };
         
-        element = (typeof element === "string") ? document.getElementById(element) : element;
+        element = (typeof element === "string" && element != "") ? document.getElementById(element) : element;
         
         if ((typeof element === "object" && element !== null)
             && (element.nodeName !== null)
@@ -1055,7 +1087,7 @@ OrgChartV2.prototype = {
             offsetTop: 0
         };
         
-        element = (typeof element === "string") ? document.getElementById(element) : element;
+        element = (typeof element === "string" && element != "") ? document.getElementById(element) : element;
         
         if ((typeof element === "object" && element !== null)
             && (isNaN(element.offsetLeft) === false && element.offsetLeft !== null)
@@ -1083,13 +1115,17 @@ OrgChartV2.prototype = {
             var nodeWidth = 0;
             var nodeOffsetWidth = (isNaN(orgNode.node.offsetWidth) === false) ? orgNode.node.offsetWidth : 0;
             
-            if (isNaN(orgNode.node.orderID) === true || orgNode.node.orderID == 0) {
+            if (isNaN(orgNode.node.orderID) === true 
+                || orgNode.node.orderID == 0) {
+                
                 ret = nodeLeft;
             }
             else {
                 for (var i = 0; i <= orgNode.node.orderID; i ++) {
-                    var nodeDepth = (isNaN(orgNode.node.depth) === false && orgNode.node.depth !== null) ? orgNode.node.depth : 0;
-                    var nodeGroupID = (isNaN(orgNode.node.groupID) === false && orgNode.node.groupID !== null) ? orgNode.node.groupID : 0;
+                    var nodeDepth = (isNaN(orgNode.node.depth) === false 
+                        && orgNode.node.depth !== null) ? orgNode.node.depth : 0;
+                    var nodeGroupID = (isNaN(orgNode.node.groupID) === false 
+                        && orgNode.node.groupID !== null) ? orgNode.node.groupID : 0;
                     
                     if (nodeDepth == 0 || nodeGroupID == 0) {
                         continue;
@@ -1101,7 +1137,8 @@ OrgChartV2.prototype = {
                     
                     var groupsNode = this.depthGroup[nodeDepth].nodeGroups[nodeGroupID][i];
                     
-                    var offsetWidth = (isNaN(groupsNode.node.offsetWidth) === false && groupsNode.node.offsetWidth !== null) ? groupsNode.node.offsetWidth : 0;
+                    var offsetWidth = (isNaN(groupsNode.node.offsetWidth) === false 
+                        && groupsNode.node.offsetWidth !== null) ? groupsNode.node.offsetWidth : 0;
                     //var optWidth = (isNaN(groupsNode.options.width) === false && groupsNode.options.width !== null) ? groupsNode.options.width : 0;
                     //var optMaxWidth = (isNaN(groupsNode.options.maxWidth) === false && groupsNode.options.maxWidth !== null) ? groupsNode.options.maxWidth : 0;
                     
@@ -1121,16 +1158,22 @@ OrgChartV2.prototype = {
         var ret = 0;
         
         if (typeof orgNodes === "object" && orgNodes !== null) {
-            var defaultWidth = (isNaN(this.options.node.width) === false && this.options.node.width !== null) ? this.options.node.width : 0;
+            var defaultWidth = (isNaN(this.options.node.width) === false 
+                && this.options.node.width !== null) ? this.options.node.width : 0;
             
-            if (isNaN(this.options.node.maxWidth) === false && (defaultWidth > this.options.node.maxWidth || defaultWidth < 0)) {
+            if (isNaN(this.options.node.maxWidth) === false 
+                && (defaultWidth > this.options.node.maxWidth || defaultWidth < 0)) {
+                
                 defaultWidth = this.options.node.maxWidth;
             }
             
             for (var i = 0; i < orgNodes.nodes.length; i ++) {
-                var offsetWidth = (isNaN(orgNodes.nodes[i].node.offsetWidth) === false && orgNodes.nodes[i].node.offsetWidth !== null) ? orgNodes.nodes[i].node.offsetWidth : 0;
-                var optWidth = (isNaN(orgNodes.nodes[i].options.width) === false && orgNodes.nodes[i].options.width !== null) ? orgNodes.nodes[i].options.width : 0;
-                var optMaxWidth = (isNaN(orgNodes.nodes[i].options.maxWidth) === false && orgNodes.nodes[i].options.maxWidth !== null) ? orgNodes.nodes[i].options.maxWidth : 0;
+                var offsetWidth = (isNaN(orgNodes.nodes[i].node.offsetWidth) === false 
+                    && orgNodes.nodes[i].node.offsetWidth !== null) ? orgNodes.nodes[i].node.offsetWidth : 0;
+                var optWidth = (isNaN(orgNodes.nodes[i].options.width) === false 
+                    && orgNodes.nodes[i].options.width !== null) ? orgNodes.nodes[i].options.width : 0;
+                var optMaxWidth = (isNaN(orgNodes.nodes[i].options.maxWidth) === false 
+                    && orgNodes.nodes[i].options.maxWidth !== null) ? orgNodes.nodes[i].options.maxWidth : 0;
                 
                 ret += offsetWidth + ((optWidth > optMaxWidth || optWidth < 0) ? optMaxWidth : optWidth);
             }
@@ -1145,8 +1188,10 @@ OrgChartV2.prototype = {
         var ret = 0;
         
         if (typeof orgNode === "object" && orgNode !== null) {
-            var nodeDepth = (isNaN(orgNode.node.depth) === false && orgNode.node.depth !== null) ? orgNode.node.depth : 0;
-            var nodeGroupID = (isNaN(orgNode.node.groupID) === false && orgNode.node.groupID !== null) ? orgNode.node.groupID : 0;
+            var nodeDepth = (isNaN(orgNode.node.depth) === false 
+                && orgNode.node.depth !== null) ? orgNode.node.depth : 0;
+            var nodeGroupID = (isNaN(orgNode.node.groupID) === false 
+                && orgNode.node.groupID !== null) ? orgNode.node.groupID : 0;
             
             if (typeof this.depthGroup[nodeDepth] === "object" && this.depthGroup[nodeDepth] !== null) {
                 var groupsNode = this.depthGroup[nodeDepth].nodeGroups[nodeGroupID];
@@ -1248,10 +1293,14 @@ OrgChartV2.prototype = {
         
         if (typeof lineParams === "object" && lineParams !== null) {
             ret.id = (typeof lineParams.id === "string") ? lineParams.id : ret.id;
-            ret.top = (typeof lineParams.top === "string" || typeof lineParams.top === "number") ? this.drawLineGetPx(lineParams.top) : ret.top;
-            ret.left = (typeof lineParams.left === "string" || typeof lineParams.left === "number") ? this.drawLineGetPx(lineParams.left) : ret.left;
-            ret.longLength = (typeof lineParams.longLength === "string" || typeof lineParams.longLength === "number") ? this.drawLineGetPx(lineParams.longLength) : ret.longLength;
-            ret.size = (typeof lineParams.size === "string" || typeof lineParams.size === "number") ? this.drawLineGetPx(lineParams.size) : ret.size;
+            ret.top = (typeof lineParams.top === "string" 
+                || typeof lineParams.top === "number") ? this.drawLineGetPx(lineParams.top) : ret.top;
+            ret.left = (typeof lineParams.left === "string" 
+                || typeof lineParams.left === "number") ? this.drawLineGetPx(lineParams.left) : ret.left;
+            ret.longLength = (typeof lineParams.longLength === "string" 
+                || typeof lineParams.longLength === "number") ? this.drawLineGetPx(lineParams.longLength) : ret.longLength;
+            ret.size = (typeof lineParams.size === "string" 
+                || typeof lineParams.size === "number") ? this.drawLineGetPx(lineParams.size) : ret.size;
             ret.color = (typeof lineParams.color === "string") ? lineParams.color : ret.color;
             
             ret.instance = document.createElement("div");
