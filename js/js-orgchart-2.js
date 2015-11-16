@@ -535,7 +535,7 @@ OrgChartV2.prototype = {
         
         if ((typeof this.nodes !== "object" || this.nodes === null)
             || (typeof this.nodes.nodes !== "object" || typeof this.nodes.nodes === null)
-            || (this.nodes.nodes.length == 0)) {
+            /*|| (this.nodes.nodes.length == 0)*/) {
             
             return ret;
         }
