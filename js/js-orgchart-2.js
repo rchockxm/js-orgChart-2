@@ -124,11 +124,11 @@ OrgNodeV2.prototype = {
         };
         
         // Set the value for default variable.
-        
+        // TODO
         
         // Set the global setting for Chart and params.
         if (typeof globChart === "object" && globChart !== null) {
-            
+            // TODO
         }
         
         if (typeof globParams === "object" && globParams !== null) {
@@ -183,7 +183,9 @@ OrgNodeV2.prototype = {
         
         //docTempDiv.innerHTML = strTempHTML;
         
-        if (typeof docTempDiv.firstChild === "object" && typeof docTempDiv.firstChild !== null) {
+        if (typeof docTempDiv.firstChild === "object" 
+            && typeof docTempDiv.firstChild !== null) {
+            
             docTempDiv.firstChild.innerHTML = strTempHTML;
         }
         else {
@@ -193,7 +195,9 @@ OrgNodeV2.prototype = {
         // Check the assign DOM is exists and append to it's parent.
         var docRootElement = document.getElementById(this.options.targetName);
         
-        if (typeof docRootElement == "object" && docRootElement !== null) {
+        if (typeof docRootElement == "object" 
+            && docRootElement !== null) {
+            
             docRootElement.appendChild(docTempDiv);
         }
         else {
@@ -215,7 +219,8 @@ OrgNodeV2.prototype = {
                 nodeOffset = this.getOffset(this.node.instance);
                 
                 if (nodeOffset.width > this.options.width) {
-                    this.node.instance.style.width = (this.options.width - parseFloat(nodeOffset.width - this.options.width)) + "px";
+                    this.node.instance.style.width = (this.options.width 
+                        - parseFloat(nodeOffset.width - this.options.width)) + "px";
                 }
             }
             
@@ -225,7 +230,8 @@ OrgNodeV2.prototype = {
                 nodeOffset = this.getOffset(this.node.instance);
                 
                 if (nodeOffset.height > this.options.height) {
-                    this.node.instance.style.height = (this.options.height - parseFloat(nodeOffset.height - this.options.height)) + "px";
+                    this.node.instance.style.height = (this.options.height 
+                        - parseFloat(nodeOffset.height - this.options.height)) + "px";
                 }
             }
             
@@ -428,7 +434,8 @@ params = {
             maxWidth: 100,
             maxHeight: 100,
             template: ""
-        }
+        },
+        parentOffset: false
     },
     event: {
         node: {
@@ -471,7 +478,8 @@ function OrgChartV2(chartParams) {
             maxHeight: 0,
             template: "<div id=\"{id}\"></div>"
         },
-        parentOffset: false
+        parentOffset: false,
+        expandTarget: true
     };
     
     this.event = {
@@ -661,9 +669,31 @@ OrgChartV2.prototype = {
         for (var i = 0; i < nodesLength; i ++) {
             this.nodesDepths[i].node.left += nodeMaxLeft;
             
-            if (typeof this.nodesDepths[i].node.instance === "object" && this.nodesDepths[i].node.instance !== null) {
+            if (typeof this.nodesDepths[i].node.instance === "object" 
+                && this.nodesDepths[i].node.instance !== null) {
+                
                 this.nodesDepths[i].node.instance.style.left = this.nodesDepths[i].node.left + "px";
                 this.nodesDepths[i].node.instance.style.top = this.nodesDepths[i].node.top + "px";
+            }
+            
+            if (this.nodesDepths[i].node.left >= this.chart.width) {
+                this.chart.width = this.nodesDepths[i].node.left;
+            }
+            
+            if (this.nodesDepths[i].node.top >= this.chart.height) {
+                this.chart.height = this.nodesDepths[i].node.top;
+            }
+        }
+        
+        this.chart.width += (this.chart.left + this.chart.intervalWidth);
+        this.chart.height += (this.chart.top + this.chart.intervalHeight);
+        
+        if (this.options.expandTarget == true) {
+            if (typeof parentDOM === "object" 
+                && parentDOM !== null) {
+                
+                parentDOM.style.width = this.chart.width + "px";
+                parentDOM.style.height = this.chart.height + "px";
             }
         }
         
@@ -671,7 +701,7 @@ OrgChartV2.prototype = {
         for (var i = 1; i <= this.chart.depth; i ++) {
             var depthNodes = this.depthGroup[i].nodes;
             
-            for(var j = 0; j < depthNodes.length; j ++) {
+            for (var j = 0; j < depthNodes.length; j ++) {
                 if (i != this.chart.depth) {
                     if (depthNodes[j].nodes.length != 0) {
                         var nodeLineLeft = (depthNodes[j].node.left + (depthNodes[j].node.offsetWidth / 2));
@@ -740,8 +770,11 @@ OrgChartV2.prototype = {
                     
                     nodeLineWidth -= (nodeGroups[j][nodeGroups[j].length - 1].node.offsetWidth / 2);
                     
-                    var nodeLineTop = (nodeGroups[j][0].node.top - ((this.chart.intervalHeight - this.chart.line.size) / 2) - this.chart.line.size);
-                    var nodeLineLeft = (nodeGroups[j][0].node.left + (nodeGroups[j][0].node.offsetWidth / 2));
+                    var nodeLineTop = (nodeGroups[j][0].node.top 
+                        - ((this.chart.intervalHeight - this.chart.line.size) / 2) 
+                        - this.chart.line.size);
+                    var nodeLineLeft = (nodeGroups[j][0].node.left 
+                        + (nodeGroups[j][0].node.offsetWidth / 2));
                     
                     var drawLineParams = {
                         id: "line-group-" + nodeGroups[j][0].node.idt1,
@@ -1024,7 +1057,9 @@ OrgChartV2.prototype = {
             
             var i = 0;
             
-            while (element !== null && typeof element.nodeName === "string") {
+            while (element !== null 
+                && typeof element.nodeName === "string") {
+                
                 element = element.parentNode;
                 
                 if (element.nodeName != "HTML") {
@@ -1056,7 +1091,9 @@ OrgChartV2.prototype = {
             
             var i = 0;
             
-            while (element !== null && typeof element.nodeName === "string") {
+            while (element !== null 
+                && typeof element.nodeName === "string") {
+                
                 element = element.parentNode;
                 
                 if (element.nodeName != "HTML") {
@@ -1098,7 +1135,9 @@ OrgChartV2.prototype = {
             
             var parentElement = element.offsetParent;
             
-            while (parentElement !== null || typeof parentElement === "undefined") {
+            while (parentElement !== null 
+                || typeof parentElement === "undefined") {
+                
                 ret.offsetLeft += element.offsetLeft;
                 ret.offsetTop += element.offsetTop;
                 parentElement = parentElement.offsetParent;
@@ -1131,7 +1170,9 @@ OrgChartV2.prototype = {
                         continue;
                     }
                     
-                    if (typeof this.depthGroup[nodeDepth] !== "object" || this.depthGroup[nodeDepth] === null) {
+                    if (typeof this.depthGroup[nodeDepth] !== "object" 
+                        || this.depthGroup[nodeDepth] === null) {
+                        
                         continue;
                     }
                     
