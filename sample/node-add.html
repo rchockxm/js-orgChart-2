@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<title>js-orgChart v2 by Rchockxm</title>
+<link rel="stylesheet" type="text/css" href="css/template.css" />
+<script language="javascript" src="../js/js-orgchart-2.js"></script>
+<script language="javascript" src="data/data.js"></script>
+</head>
+
+<body>
+    <div id="form-content" style="">
+        <div id="orgchart"></div>
+    </div>
+</body>
+
+<script language="javascript">
+function addNodesByClick(pData, id) {
+    if (typeof pData === "object" && pData !== null) {
+        var isFind = false;
+        
+        if (typeof pData.node === "object" && pData.node !== null) {
+            if (pData.node.idt1 == id) {
+                isFind = true;
+            }
+            
+            if (isFind == true) {
+                var nodeNewChildParams = {
+                    options: {
+                        targetName: "orgchart",
+                        subTargetName: "orgnode",
+                        clsName: "org-node"
+                    },
+                    customParams: {
+                        caption: lpszDemoData,
+                        description: "New Child Nodes"
+                    }
+                };
+                
+                var node = new OrgNodeV2(nodeNewChildParams);
+                
+                pData.addNodes(node);
+            }
+        }
+        
+        if (isFind == false) {
+            if (typeof pData.nodes === "object" && pData.nodes !== null) {
+                for (var i = 0; i < pData.nodes.length; i ++) {
+                    addNodesByClick(pData.nodes[i], id);
+                }
+            }
+        }
+    }
+}
+
+(function() {
+    // Create params for chart.
+    var chartParams = {
+        options: {
+            top: 12,
+            left: 12,
+            line: {
+                size: 2,
+                color: "#3388dd"
+            },
+            node: {
+                width: 64,
+                height: 64,
+                maxWidth: 128,
+                maxHeight: 128,
+                template: "<div id=\"{id}\"><p class=\"node-caption\">{caption}</p><span class=\"node-description\">{description}</span><br /><label>Click to Add</label></div>"
+            }
+        },
+        event: {
+            node: {
+                onProcess: function(node, nodes) {
+                    console.log("node.onProcess");
+                },
+                onClick: function() {
+                    console.log("node.onClick");
+                    
+                    addNodesByClick(pOrgNodes, this.id);
+                    
+                    document.getElementById("orgchart").innerHTML = "";
+                    
+                    // Re-Create OrgChartV2.
+                    var pChart = new OrgChartV2(chartParams);
+                    
+                    // Re-Init.
+                    pChart.render();
+                },
+                onMouseMove: function() {
+                    console.log("node.onMouseMove");
+                },
+                onMouseOver: function() {
+                    console.log("node.onMouseOver");
+                },
+                onMouseOut: function() {
+                    console.log("node.onMouseOut");
+                }
+            },
+            onCreate: function() {
+                console.log("onCreate");
+            },
+            onError: null,
+            onFinish: function() {
+                console.log("onFinish");
+            }
+        },
+        nodes: pOrgNodes
+    };
+    
+    // Create OrgChartV2.
+    var pChart = new OrgChartV2(chartParams);
+    
+    // Init.
+    pChart.render();
+})();
+</script>
+
+</html>
