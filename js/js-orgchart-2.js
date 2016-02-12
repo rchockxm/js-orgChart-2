@@ -89,7 +89,9 @@ OrgNodeV2.prototype = {
     ctor: function(userNodeParams) {
         var ret = false;
         
-        if (typeof userNodeParams === "object" && userNodeParams !== null) {
+        if (typeof userNodeParams === "object" 
+            && userNodeParams !== null) {
+                
             if (typeof userNodeParams.options === "object" 
                 && userNodeParams.options !== null) {
                 
@@ -175,7 +177,9 @@ OrgNodeV2.prototype = {
         
         strTempHTML = strTempHTML.replace("{id}", this.node.idt1);
         
-        if (typeof this.customParams === "object" && this.customParams !== null) {
+        if (typeof this.customParams === "object" 
+            && this.customParams !== null) {
+            
             for (var k in this.customParams) {
                 strTempHTML = strTempHTML.replace("{" + k + "}", this.customParams[k]);
             }
@@ -210,7 +214,9 @@ OrgNodeV2.prototype = {
         // Set the Chart Node event.
         
         // Set the Chart Node width and height.
-        if (typeof this.node.instance === "object" && this.node.instance !== null) {
+        if (typeof this.node.instance === "object" 
+            && this.node.instance !== null) {
+            
             var nodeOffset = this.getOffset(this.node.instance);
             
             if (this.options.width > 0 && nodeOffset.width < this.options.width) {
@@ -272,8 +278,10 @@ OrgNodeV2.prototype = {
     addNodes: function(orgChildNode) {
         var ret = false;
         
-        if ((typeof orgChildNode === "object" && orgChildNode !== null) 
-            && (typeof orgChildNode.node === "object" && orgChildNode.node !== null)) {
+        if ((typeof orgChildNode === "object" 
+            && orgChildNode !== null) 
+                && (typeof orgChildNode.node === "object" 
+                    && orgChildNode.node !== null)) {
                 
             orgChildNode.node.parent = this;
             
@@ -336,8 +344,9 @@ OrgNodeV2.prototype = {
                 nodeParent = nodeParent.offsetParent;
             }
             
-            if (typeof sender.currentStyle === "object" && sender.currentStyle !== null) {
-                    
+            if (typeof sender.currentStyle === "object" 
+                && sender.currentStyle !== null) {
+                
                 if (ret.width == 0) {
                     ret.width += (isNaN(sender.currentStyle.width === false 
                         && sender.currentStyle.width !== null)) ? sender.currentStyle.width : 0;
@@ -377,7 +386,9 @@ OrgNodeV2.prototype = {
         };
         
         for (var i = 1; i <= length; i ++) {
-            var nCode = parseInt(Math.floor(Math.random() * (pAlpha.max - pAlpha.min + 1)) + pAlpha.min);
+            var nCode = parseInt(Math.floor(Math.random() 
+                * (pAlpha.max - pAlpha.min + 1)) 
+                + pAlpha.min);
             
             if (typeof nCode !== "number") {
                 nCode = pAlpha.min;
@@ -391,8 +402,10 @@ OrgNodeV2.prototype = {
     getDiffParams: function(sourceParams, mappingParams) {
         var ret = sourceParams;
         
-        if ((typeof sourceParams === "object" && sourceParams !== null) 
-            && (typeof mappingParams === "object" && mappingParams !== null)) {
+        if ((typeof sourceParams === "object" 
+            && sourceParams !== null) 
+                && (typeof mappingParams === "object" 
+                    && mappingParams !== null)) {
             
             for (var k in mappingParams) {
                 if (typeof sourceParams[k] === "undefined" 
@@ -532,8 +545,10 @@ OrgChartV2.prototype = {
     ctor: function(userChartParams) {
         var ret = false;
         
-        if ((typeof userChartParams === "object" && userChartParams !== null)
-            && (typeof userChartParams.nodes === "object" && userChartParams.nodes !== null)) {
+        if ((typeof userChartParams === "object" 
+            && userChartParams !== null)
+                && (typeof userChartParams.nodes === "object" 
+                    && userChartParams.nodes !== null)) {
             
             if (typeof userChartParams.nodes.getDiffParams === "function") {
                 this.nodes = userChartParams.nodes;
@@ -559,8 +574,10 @@ OrgChartV2.prototype = {
     render: function() {
         var ret = false;
         
-        if ((typeof this.nodes !== "object" || this.nodes === null)
-            || (typeof this.nodes.nodes !== "object" || typeof this.nodes.nodes === null)
+        if ((typeof this.nodes !== "object" 
+            || this.nodes === null)
+                || (typeof this.nodes.nodes !== "object" 
+                    || typeof this.nodes.nodes === null)
             /*|| (this.nodes.nodes.length == 0)*/) {
             
             return ret;
@@ -762,7 +779,6 @@ OrgChartV2.prototype = {
             var nodeGroups = this.depthGroup[i].nodeGroups;
             
             for (var j = 0; j < nodeGroups.length; j ++) {
-                
                 if (nodeGroups[j].length != 1) {
                     var nodeLineWidth = (nodeGroups[j].depthGroupWidth 
                         - (nodeGroups[j][0].node.offsetWidth / 2) 
@@ -1083,7 +1099,8 @@ OrgChartV2.prototype = {
             offsetTop: 0
         };
         
-        element = (typeof element === "string" && element != "") ? document.getElementById(element) : element;
+        element = (typeof element === "string" 
+            && element != "") ? document.getElementById(element) : element;
         
         if ((typeof element === "object" && element !== null)
             && (element.nodeName !== null)
@@ -1124,11 +1141,13 @@ OrgChartV2.prototype = {
             offsetTop: 0
         };
         
-        element = (typeof element === "string" && element != "") ? document.getElementById(element) : element;
+        element = (typeof element === "string" 
+            && element != "") ? document.getElementById(element) : element;
         
-        if ((typeof element === "object" && element !== null)
-            && (isNaN(element.offsetLeft) === false && element.offsetLeft !== null)
-            && (isNaN(element.offsetTop) === false && element.offsetTop !== null)) {
+        if ((typeof element === "object" 
+            && element !== null)
+                && (isNaN(element.offsetLeft) === false && element.offsetLeft !== null)
+                && (isNaN(element.offsetTop) === false && element.offsetTop !== null)) {
             
             ret.offsetLeft = element.offsetLeft;
             ret.offsetTop = element.offsetTop;
@@ -1166,7 +1185,9 @@ OrgChartV2.prototype = {
                     var nodeGroupID = (isNaN(orgNode.node.groupID) === false 
                         && orgNode.node.groupID !== null) ? orgNode.node.groupID : 0;
                     
-                    if (nodeDepth == 0 || nodeGroupID == 0) {
+                    if (nodeDepth == 0 
+                        || nodeGroupID == 0) {
+                        
                         continue;
                     }
                     
@@ -1198,7 +1219,9 @@ OrgChartV2.prototype = {
     getNodesWidth: function(orgNodes) {
         var ret = 0;
         
-        if (typeof orgNodes === "object" && orgNodes !== null) {
+        if (typeof orgNodes === "object" 
+            && orgNodes !== null) {
+            
             var defaultWidth = (isNaN(this.options.node.width) === false 
                 && this.options.node.width !== null) ? this.options.node.width : 0;
             
@@ -1261,7 +1284,7 @@ OrgChartV2.prototype = {
             }*/
             
             //var offsetHeight = (isNaN(this.depthGroup[i].node.offsetHeight) === false && this.depthGroup[i].node.offsetHeight !== null) ? this.depthGroup[i].node.offsetHeight : 0;
-           //var optHeight = (isNaN(this.depthGroup[i].options.height) === false && this.depthGroup[i].options.height !== null) ? this.depthGroup[i].options.height : 0;
+            //var optHeight = (isNaN(this.depthGroup[i].options.height) === false && this.depthGroup[i].options.height !== null) ? this.depthGroup[i].options.height : 0;
             //var optMaxHeight = (isNaN(this.depthGroup[i].options.maxHeighth) === false && this.depthGroup[i].options.maxHeight !== null) ? this.depthGroup[i].options.maxHeight : 0;
             //ret += (offsetHeight + ((optHeight > optMaxHeight || optHeight < 0) ? optMaxHeight : optHeight));
             
@@ -1295,7 +1318,9 @@ OrgChartV2.prototype = {
     drawNodesInit: function(orgNodes, globChart, globParams, globEvent) {
         var ret = false;
         
-        if (typeof orgNodes === "object" && orgNodes !== null) {
+        if (typeof orgNodes === "object" 
+            && orgNodes !== null) {
+            
             var render = orgNodes.render(globChart, globParams, globEvent);
             
             this.chart.total.nodes += 1;
@@ -1332,7 +1357,9 @@ OrgChartV2.prototype = {
             color: "#000000"
         };
         
-        if (typeof lineParams === "object" && lineParams !== null) {
+        if (typeof lineParams === "object" 
+            && lineParams !== null) {
+            
             ret.id = (typeof lineParams.id === "string") ? lineParams.id : ret.id;
             ret.top = (typeof lineParams.top === "string" 
                 || typeof lineParams.top === "number") ? this.drawLineGetPx(lineParams.top) : ret.top;
@@ -1367,7 +1394,8 @@ OrgChartV2.prototype = {
                 ret.instance.style.width = "0px";
             }
             
-            parentDOM = (typeof parentDOM === "object" && parentDOM !== null) ? parentDOM : document.body;
+            parentDOM = (typeof parentDOM === "object" 
+                && parentDOM !== null) ? parentDOM : document.body;
             parentDOM.appendChild(ret.instance);
         }
         
@@ -1376,6 +1404,7 @@ OrgChartV2.prototype = {
     drawLineGetPx: function(px) {
         var ret = (typeof px === "number") ? px + "px" : px;
          
-        return ((typeof px === "string") && px.substr(px.length - 2).toLowerCase() != "px") ? px + "px" : px;
+        return ((typeof px === "string") 
+            && px.substr(px.length - 2).toLowerCase() != "px") ? px + "px" : px;
     }
 }
