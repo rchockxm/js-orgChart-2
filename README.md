@@ -52,6 +52,8 @@ var nodeParams = {
         clsName: "org-node",
         width: 64,
         height: 32,
+        minWidth: 0,
+        minHeight: 0,
         maxWidth: 0,
         maxHeight: 0,
         template: ""
@@ -76,6 +78,8 @@ var nodeChildParams = {
         clsName: "org-node",
         width: 16,
         height: 16,
+        minWidth: 0,
+        minHeight: 0,
         maxWidth: 0,
         maxHeight: 0,
         template: ""
@@ -113,6 +117,8 @@ var chartParams = {
         node: {
             width: 64,
             height: 64,
+            minWidth: 32,
+            minHeight: 32,
             maxWidth: 128,
             maxHeight: 128,
             template: "<div id=\"{id}\">{caption} {description}</div>"
