@@ -67,7 +67,7 @@ var nodeParams = {
 var pOrgNodes = new OrgNodeV2(nodeParams);
 ```
 
-Create the child nodes of rood node. Use <code>OrgNodeV2.addNodes</code> method as a child of the current node.
+Create the child nodes of root node. Use <code>OrgNodeV2.addNodes</code> method as a child of the current node.
 
 ```js
 var pOrgChildNode = null;
