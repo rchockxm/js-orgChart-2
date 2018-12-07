@@ -3,4 +3,4 @@ description: Organizational Chart JavaScript Library
 authors:
   - Rchockxm
 resources:
-  - https://cdn.rawgit.com/rchockxm/js-orgChart-2/master/js/js-orgchart-2.js
+  - https://cdn.jsdelivr.net/gh/rchockxm/js-orgChart-2/js/js-orgchart-2.js
